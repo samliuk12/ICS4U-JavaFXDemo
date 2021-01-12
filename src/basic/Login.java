@@ -36,6 +36,8 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import static javafx.geometry.HPos.RIGHT;
+
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -58,15 +60,15 @@ public class Login extends Application {
         primaryStage.setTitle("JavaFX Welcome");
         GridPane grid = new GridPane();
         grid.setAlignment(Pos.CENTER);
-        grid.setHgap(10);
+        grid.setHgap(10); // Spacing between cells
         grid.setVgap(10);
-        grid.setPadding(new Insets(25, 25, 25, 25));
+        grid.setPadding(new Insets(25, 25, 25, 25)); // Margins around grid
 
         Text scenetitle = new Text("Welcome");
         scenetitle.setFont(Font.font("Tahoma", FontWeight.NORMAL, 20));
-        grid.add(scenetitle, 0, 0, 2, 1);
+        grid.add(scenetitle, 0, 0, 2, 1); // grid.add(node, col, row, colspan, rowspan)
 
-        Label userName = new Label("User Name:");
+        Label userName = new Label("User Name:"); // Text vs button: https://stackoverflow.com/questions/24374867/label-and-text-differences-in-javafx#:~:text=A%20Text%20is%20a%20geometric,used%20in%20more%20generic%20ways.
         grid.add(userName, 0, 1);
 
         TextField userTextField = new TextField();
@@ -78,19 +80,19 @@ public class Login extends Application {
         PasswordField pwBox = new PasswordField();
         grid.add(pwBox, 1, 2);
 
-        //grid.setGridLinesVisible(true);
+        // grid.setGridLinesVisible(true);
 
         Button btn = new Button("Sign in");
-        HBox hbBtn = new HBox(10);
+        HBox hbBtn = new HBox(10); // A horizontal box container
         hbBtn.setAlignment(Pos.BOTTOM_RIGHT);
         hbBtn.getChildren().add(btn);
         grid.add(hbBtn, 1, 4);
 
         final Text actiontarget = new Text();
-        grid.add(actiontarget, 0, 6);
-        grid.setColumnSpan(actiontarget, 2);
+        grid.add(actiontarget, 0, 6, 2, 1);
+        // grid.setColumnSpan(actiontarget, 2);
         grid.setHalignment(actiontarget, RIGHT);
-        actiontarget.setId("actiontarget");
+        // actiontarget.setId("actiontarget");
 
         btn.setOnAction(new EventHandler<ActionEvent>() {
 

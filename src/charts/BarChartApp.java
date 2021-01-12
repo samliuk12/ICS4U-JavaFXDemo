@@ -20,18 +20,18 @@ import javafx.stage.Stage;
 public class BarChartApp extends Application {
  
     private BarChart chart;
-    private CategoryAxis xAxis;
+    private CategoryAxis xAxis; // Axis of categories
     private NumberAxis yAxis;
  
     public Parent createContent() {
         String[] years = {"2007", "2008", "2009"};
         xAxis = new CategoryAxis();
         xAxis.setCategories(FXCollections.<String>observableArrayList(years));
-        yAxis = new NumberAxis("Units Sold", 0.0d, 3000.0d, 1000.0d);
+        yAxis = new NumberAxis("Units Sold", 0.0d, 3000.0d, 1000.0d); // Title, start, end, increment
         ObservableList<BarChart.Series> barChartData =
             FXCollections.observableArrayList(
-              new BarChart.Series("Apples", FXCollections.observableArrayList(
-                new BarChart.Data(years[0], 567d),
+              new BarChart.Series("Apples", FXCollections.observableArrayList( // Series = one type of data
+                new BarChart.Data(years[0], 567d), // Data = specific plot point
                 new BarChart.Data(years[1], 1292d),
                 new BarChart.Data(years[2], 1292d))),
               new BarChart.Series("Lemons", FXCollections.observableArrayList(
@@ -43,7 +43,7 @@ public class BarChartApp extends Application {
                 new BarChart.Data(years[1], 1927),
                 new BarChart.Data(years[2], 2774)))
             );
-        chart = new BarChart(xAxis, yAxis, barChartData, 25.0d);
+        chart = new BarChart(xAxis, yAxis, barChartData); // Axis object, axis object, data object
         return chart;
     }
  
